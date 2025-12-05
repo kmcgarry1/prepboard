@@ -77,5 +77,6 @@ export const useTimerBoard = () => {
     resetTimer: engine.resetTimer,
     removeTimer: engine.removeTimer,
     clearDone: engine.clearDone,
+    toggleMute: alerts.toggleMute,
   }
 }
