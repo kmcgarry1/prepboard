@@ -107,6 +107,10 @@ export const useTimerAlerts = (timers: Ref<TimerItem[]>) => {
     audioError.value = ''
   }
 
+  const toggleMute = () => {
+    muted.value = !muted.value
+  }
+
   return {
     muted,
     liveAnnouncement,
@@ -116,5 +120,6 @@ export const useTimerAlerts = (timers: Ref<TimerItem[]>) => {
     clearRepeat,
     disposeAlerts,
     noteInteraction,
+    toggleMute,
   }
 }
