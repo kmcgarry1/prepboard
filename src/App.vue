@@ -29,6 +29,7 @@ const {
   resetTimer,
   removeTimer,
   clearDone,
+  toggleMute,
 } = useTimerBoard()
 
 const handleCreateTimer = (payload: NewTimerPayload) => {
@@ -65,7 +66,7 @@ const handleCreateTimer = (payload: NewTimerPayload) => {
             @open-new="openNew"
             @toggle-status="toggleStatus"
             @toggle-theme="isDark = !isDark"
-            @toggle-mute="muted = !muted"
+            @toggle-mute="toggleMute"
             @update:dense-layout="denseLayout = $event"
           />
         </section>
