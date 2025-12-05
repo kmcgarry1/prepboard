@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { nextTick, onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 
-defineProps<{
+const props = defineProps<{
   show: boolean
   runningCount: number
   doneCount: number
@@ -12,6 +13,27 @@ defineProps<{
 const emit = defineEmits<{
   close: []
 }>()
+
+const panelRef = ref<HTMLElement | null>(null)
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && props.show) {
+    emit('close')
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', onKeydown))
+onBeforeUnmount(() => window.removeEventListener('keydown', onKeydown))
+
+watch(
+  () => props.show,
+  async (val) => {
+    if (val) {
+      await nextTick()
+      panelRef.value?.focus()
+    }
+  }
+)
 </script>
 
 <template>
@@ -25,8 +47,13 @@ const emit = defineEmits<{
   >
     <aside
       v-if="show"
-      class="fixed right-4 top-24 z-20 w-80 max-w-[90vw] rounded-3xl border border-smoke/10 bg-white/90 p-5 shadow-soft backdrop-blur dark:border-white/10 dark:bg-slate-900/95"
+      ref="panelRef"
+      class="fixed right-4 top-24 z-20 w-80 max-w-[90vw] rounded-3xl border border-smoke/10 bg-white/90 p-5 shadow-soft backdrop-blur focus:outline-none focus-visible:ring-2 focus-visible:ring-basil/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:border-white/10 dark:bg-slate-900/95 dark:focus-visible:ring-offset-slate-900"
+      tabindex="-1"
     >
+      <span class="sr-only" aria-live="polite">
+        {{ runningCount }} running, {{ doneCount }} done, {{ total }} total
+      </span>
       <div class="mb-3 flex items-center justify-between gap-3">
         <div>
           <p class="text-[11px] uppercase tracking-[0.24em] text-smoke">Kitchen pulse</p>

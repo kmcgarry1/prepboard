@@ -1,0 +1,38 @@
+[
+  {
+    "id": "herb",
+    "name": "Herb garden",
+    "bg": "bg-[#dfe9cf]",
+    "fill": "bg-[#6f8a4d]",
+    "border": "border-[#c7d6b1]",
+    "text": "text-[#243318]",
+    "stroke": "#6f8a4d"
+  },
+  {
+    "id": "citrus",
+    "name": "Citrus peel",
+    "bg": "bg-[#ffe4b8]",
+    "fill": "bg-[#d9891a]",
+    "border": "border-[#f6cf8a]",
+    "text": "text-[#3b2505]",
+    "stroke": "#d9891a"
+  },
+  {
+    "id": "clay",
+    "name": "Clay roast",
+    "bg": "bg-[#eed6c7]",
+    "fill": "bg-[#b36d52]",
+    "border": "border-[#e3c1ad]",
+    "text": "text-[#402217]",
+    "stroke": "#b36d52"
+  },
+  {
+    "id": "smoke",
+    "name": "Toasted sesame",
+    "bg": "bg-[#dfe6f2]",
+    "fill": "bg-[#5a6b7d]",
+    "border": "border-[#c8d3e4]",
+    "text": "text-[#121826]",
+    "stroke": "#5a6b7d"
+  }
+]
