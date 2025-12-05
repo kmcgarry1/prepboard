@@ -4,6 +4,7 @@ import { useIntervalFn } from '@vueuse/core'
 import { SparklesIcon } from '@heroicons/vue/24/outline'
 import TimerCard from './components/TimerCard.vue'
 import ControlBar from './components/ControlBar.vue'
+import MobileActionBar from './components/MobileActionBar.vue'
 import NewTimerModal from './components/NewTimerModal.vue'
 import StatusPanel from './components/StatusPanel.vue'
 import type { AccentOption, NewTimerPayload, TimerItem, TimerPreset } from './types'
@@ -193,7 +194,7 @@ const sortedTimers = computed(() => {
         class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-64 bg-gradient-to-b from-white/60 via-transparent to-transparent dark:from-white/5"
         aria-hidden="true"
       />
-      <main class="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:py-14">
+      <main class="relative mx-auto max-w-6xl px-4 pb-28 pt-10 sm:px-6 lg:pb-14 lg:pt-14">
         <header class="mb-6 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-center gap-3">
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-basil/20 ring-1 ring-basil/40">
@@ -214,17 +215,17 @@ const sortedTimers = computed(() => {
           </div>
         </header>
 
-        <ControlBar
-          class="mb-8"
-          :dense-layout="denseLayout"
-          :running-count="runningCount"
-          :done-count="doneCount"
-          :is-dark="isDark"
-          @open-new="showNewTimerModal = true"
-          @toggle-status="showStatusPanel = !showStatusPanel"
-          @toggle-theme="isDark = !isDark"
-          @update:dense-layout="denseLayout = $event"
-        />
+      <ControlBar
+        class="mb-8 hidden sm:block"
+        :dense-layout="denseLayout"
+        :running-count="runningCount"
+        :done-count="doneCount"
+        :is-dark="isDark"
+        @open-new="showNewTimerModal = true"
+        @toggle-status="showStatusPanel = !showStatusPanel"
+        @toggle-theme="isDark = !isDark"
+        @update:dense-layout="denseLayout = $event"
+      />
 
         <section class="mt-6">
           <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -285,6 +286,16 @@ const sortedTimers = computed(() => {
         :presets="quickPresets"
         @close="showNewTimerModal = false"
         @create="addTimerFromPayload"
+      />
+
+      <MobileActionBar
+        :is-dark="isDark"
+        :running-count="runningCount"
+        :dense-layout="denseLayout"
+        @open-new="showNewTimerModal = true"
+        @toggle-status="showStatusPanel = !showStatusPanel"
+        @toggle-theme="isDark = !isDark"
+        @update:dense-layout="denseLayout = $event"
       />
     </main>
     </div>

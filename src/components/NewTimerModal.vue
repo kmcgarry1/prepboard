@@ -80,7 +80,8 @@ const applyPreset = (preset: TimerPreset) => {
     >
       <div class="absolute inset-0 bg-soot/40 dark:bg-black/60" aria-hidden="true" @click="emit('close')" />
       <div
-        class="relative w-full max-w-2xl rounded-3xl border border-smoke/10 bg-white/90 p-6 shadow-soft backdrop-blur dark:border-white/10 dark:bg-slate-900/95 dark:text-slate-100"
+        class="relative w-full max-w-2xl rounded-3xl border border-smoke/10 bg-white/90 p-4 shadow-soft backdrop-blur dark:border-white/10 dark:bg-slate-900/95 dark:text-slate-100 sm:p-6"
+        style="max-height: 90vh"
       >
         <div class="flex items-center justify-between gap-3">
           <div>
@@ -97,8 +98,8 @@ const applyPreset = (preset: TimerPreset) => {
           </button>
         </div>
 
-        <form class="mt-5 space-y-5" @submit.prevent="submit">
-          <div class="grid gap-4 md:grid-cols-2">
+        <form class="mt-4 space-y-4 overflow-y-auto pr-1 sm:mt-5 sm:space-y-5" style="max-height: calc(90vh - 80px)" @submit.prevent="submit">
+          <div class="grid gap-3 md:grid-cols-2">
             <label class="space-y-2 text-sm text-soot dark:text-slate-100">
               <span class="text-xs uppercase tracking-[0.2em] text-smoke dark:text-slate-300">Label</span>
               <input
