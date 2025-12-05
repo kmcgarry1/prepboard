@@ -20,6 +20,8 @@ export type TimerItem = {
   accent: AccentOption;
   lastUpdated?: number;
   createdAt: number;
+  notified?: boolean;
+  completedAt?: number;
 };
 
 export type TimerPreset = {
