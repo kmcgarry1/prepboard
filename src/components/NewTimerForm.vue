@@ -111,7 +111,9 @@ const applyPreset = (preset: TimerPreset) => {
 
     <PresetChips :presets="presets" @select="applyPreset" />
 
-    <div class="flex flex-wrap items-center gap-3" id="new-timer-helper">
+    <p id="new-timer-helper" class="text-sm text-smoke dark:text-slate-300">Focus stays on the board; creation lives here.</p>
+
+    <div class="flex flex-wrap items-center gap-3">
       <button
         type="submit"
         class="inline-flex items-center gap-2 rounded-2xl bg-basil px-4 py-3 text-sm font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-basil/30 focus:outline-none focus:ring-2 focus:ring-basil/70 disabled:cursor-not-allowed disabled:opacity-60"
@@ -128,7 +130,6 @@ const applyPreset = (preset: TimerPreset) => {
         <XMarkIcon class="h-5 w-5" aria-hidden="true" />
         Cancel
       </button>
-      <p class="text-sm text-smoke dark:text-slate-300">Focus stays on the board; creation lives here.</p>
     </div>
   </form>
 </template>
