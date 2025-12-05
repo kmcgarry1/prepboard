@@ -74,6 +74,7 @@ export const useTimerEngine = ({
           timer.status = 'done'
           timer.isRunning = false
           timer.lastUpdated = undefined
+          timer.completedAt = timer.completedAt ?? now
           if (!timer.notified) announceCompletion(timer)
         } else {
           hasActive = true
